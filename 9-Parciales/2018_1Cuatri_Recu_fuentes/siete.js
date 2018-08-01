@@ -18,7 +18,7 @@ mostrar:
 
 */
 
-function mostrar()
+function Mostrar()
 {
 	
 	var nombre;
@@ -30,17 +30,20 @@ function mostrar()
 	var cHombres;
 	var cMujeres;
 	var contador;
-	var mayorDeEdad;
-	var menorDeEdad;
+	var mayorEdad;
+	var menorEdad;
+	var nombreMayor;
+	var nombreMenor;
+	var hombreMenor;
+	var hombreMenorEdad;
 
 	cHombres=0;
 	respuesta="si";
 	cMujeres=0;
 	contador=0;
-	cMayoresdeEdad=0;
-	cMayoresdeEdad=parseInt(cMayoresdeEdad);
+	cMayoresDeEdad=0;
 	cMenoresDeEdad=0;
-	cMenoresDeEdad=parseInt(cMenoresDeEdad);
+	
 
 
 	while(respuesta!="n")
@@ -51,17 +54,17 @@ function mostrar()
 		
 		while(edad<0 || edad>100)
 		{
-			edad=prompt("error, ing la edad otra vez");
+			edad=prompt("error, ing la edad otra vez (1-100)");
 		}
 		
-		sexo=prompt("ingrese el sexo");
+		sexo=prompt("ingrese el sexo f/m");
 		
 		while(sexo!="f" && sexo!="m")
 		{
-			sexo=prompt("error, ingrese de nuevo el sexo");
+			sexo=prompt("error, ingrese de nuevo el sexo f/m");
 		}
 	//contador mayores y menores	
-		if(edad>18)
+		if(edad>=18)
 		{
 			cMayoresDeEdad+=1;
 		}
@@ -74,8 +77,8 @@ function mostrar()
 		{
 			cMujeres++;
 		}
-		else
-		{ if(sexo=="m")
+		 else
+		{	
 			cHombres++;
 		}
 	//quien es mayor y quien es menor
@@ -83,23 +86,36 @@ function mostrar()
 		if(contador==0)
 		{
 			
-			menorDeEdad=edad;
-			mayorDeEdad=edad;
+			menorEdad=edad;
+			nombreMenor=nombre;
+			mayorEdad=edad;
+			nombreMayor=nombre;
 	
 			contador++;
 				
 		}
-		else
+		
+		if(edad<menorEdad)
 		{
-			if(edad<menorDeEdad)
-			{
-				menorDeEdad=edad;
-			}
-			if(edad>mayorDeEdad)
-			{
-				mayorDeEdad=edad;
-			}
+				menorEdad=edad;
+				nombreMenor=nombre;
+
 		}
+		if(edad>mayorEdad)
+		{
+				mayorEdad=edad;
+				nombreMayor=nombre;
+		}
+
+//quien es el hombre menor de edad
+		if(sexo=='m' && (cHombres==1 || edad<hombreMenorEdad ))
+		{
+			hombreMenor=nombre;
+			hombreMenorEdad=edad;
+
+		}
+
+		
 
 
 		
@@ -107,10 +123,12 @@ function mostrar()
 		respuesta=prompt("Desea ingresar mas datos? s/n");
 	}
 	
-		alert("cantidad de mayores de edad: "+cMayoresDeEdad);
-		alert("cantidad de menores de edad: "+cMenoresDeEdad);
-		alert("cantidad de mujeres: "+cMujeres);
-		alert("cantidad de hombres: "+cHombres);
-
+		document.write("cantidad de mayores de edad: "+cMayoresDeEdad+"<br>");
+		document.write("cantidad de menores de edad: "+cMenoresDeEdad+"<br>");
+		document.write("cantidad de mujeres: "+cMujeres+"<br>");
+		document.write("cantidad de hombres: "+cHombres+"<br>");
+		document.write("nombre del mayor de edad: "+nombreMayor+"<br>");
+		document.write("nombre del menor de edad: "+nombreMenor+"<br>");
+		document.write("el hombre mas chico es: "+hombreMenor+"<br>");
 }
 
