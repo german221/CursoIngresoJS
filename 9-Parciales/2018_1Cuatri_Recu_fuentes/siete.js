@@ -18,7 +18,7 @@ mostrar:
 
 */
 
-function Mostrar()
+function mostrar()
 {
 	
 	var nombre;
@@ -27,13 +27,20 @@ function Mostrar()
 	var respuesta;
 	var cMayoresDeEdad;
 	var cMenoresDeEdad;
+	var cHombres;
+	var cMujeres;
+	var contador;
+	var mayorDeEdad;
+	var menorDeEdad;
 
-	cHombre=0;
+	cHombres=0;
 	respuesta="si";
 	cMujeres=0;
 	contador=0;
 	cMayoresdeEdad=0;
+	cMayoresdeEdad=parseInt(cMayoresdeEdad);
 	cMenoresDeEdad=0;
+	cMenoresDeEdad=parseInt(cMenoresDeEdad);
 
 
 	while(respuesta!="n")
@@ -53,21 +60,57 @@ function Mostrar()
 		{
 			sexo=prompt("error, ingrese de nuevo el sexo");
 		}
-
+	//contador mayores y menores	
 		if(edad>18)
 		{
-			cMayoresDeEdad++;
+			cMayoresDeEdad+=1;
 		}
 		else
 		{
-			cMenoresDeEdad++;
+			cMenoresDeEdad+=1;
 		}
+	//contadores de generos
+		if(sexo=="f")
+		{
+			cMujeres++;
+		}
+		else
+		{ if(sexo=="m")
+			cHombres++;
+		}
+	//quien es mayor y quien es menor
 		
-		alert("cantidad de mayores de edad: "+cMayoresDeEdad);
-		alert("cantidad de menores de edad: "+cMenoresDeEdad);
+		if(contador==0)
+		{
+			
+			menorDeEdad=edad;
+			mayorDeEdad=edad;
+	
+			contador++;
+				
+		}
+		else
+		{
+			if(edad<menorDeEdad)
+			{
+				menorDeEdad=edad;
+			}
+			if(edad>mayorDeEdad)
+			{
+				mayorDeEdad=edad;
+			}
+		}
+
 
 		
 
 		respuesta=prompt("Desea ingresar mas datos? s/n");
 	}
+	
+		alert("cantidad de mayores de edad: "+cMayoresDeEdad);
+		alert("cantidad de menores de edad: "+cMenoresDeEdad);
+		alert("cantidad de mujeres: "+cMujeres);
+		alert("cantidad de hombres: "+cHombres);
+
 }
+
