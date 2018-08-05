@@ -49,16 +49,15 @@ while(respuesta!='n')
         numero=parseInt(prompt("Error ingrese un numero valido -100 hasta 100"));
     }
 
-    if(numero/2==0)
+    if(numero%2==0 && numero !=0)
     {
         cPares++;
     }
-    else
+    else if(numero%2==1 || numero%2==-1)
     {
         cImpares++;
     }
-
-    if(numero==0)
+    else
     {
         cCeros++;
     }
