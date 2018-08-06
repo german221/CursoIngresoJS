@@ -18,7 +18,7 @@ mostrar:
 
 */
 
-function Mostrar()
+/*function Mostrar()
 {
 	
 	var nombre;
@@ -130,5 +130,111 @@ function Mostrar()
 		document.write("nombre del mayor de edad: "+nombreMayor+"<br>");
 		document.write("nombre del menor de edad: "+nombreMenor+"<br>");
 		document.write("el hombre mas chico es: "+hombreMenor+"<br>");
+}
+*/
+function mostrar()
+{
+
+	var nota;
+	var sexo;
+	var i;
+	var edad;
+	var flag;
+	var flag2;
+	var flag3;
+	var edadF;
+	var notaF;
+	var cVarones;
+	var cMujeres;
+	var sexoMenor;
+	var acumNotas;
+	var menorEdad;
+	var sexoMenor2;
+	var notaMenor2;
+	var edadMenor;
+
+	acumNotas=0;
+	flag2=0;
+	flag=0;
+	flag3=0;
+	cMujeres=0;
+	cVarones=0;
+
+	for(i=1;i<=5;i++)
+	{
+	//valido notas y el sexo
+		
+		nota=parseInt(prompt("Ingrese la nota: "));
+		while(nota<0 || nota>10)
+		{
+			nota=prompt("ingrese una nota valida <0-10>");
+		}
+		sexo=prompt("Ingrese el sexo f/m");
+		while(sexo!='f' && sexo!='m')
+		{
+			sexo=prompt("Error ingrese un sexo valido f/m");
+		}
+		
+
+	//edades y comparaciones	
+
+		edad=prompt("ingrese la edad:");
+
+		if(flag==0)
+		{
+			menorEdad=edad
+			notaMin=nota;
+			sexoMenor=sexo;
+			flag++;
+		}
+
+		
+
+		if(nota<notaMin)
+		{
+			notaMin=nota;
+			sexoMenor2=sexo;
+		}
+
+		if(edad<menorEdad)
+		{
+			menorEdad=edad;
+			sexoMenor=sexo;
+			notaMin=nota;
+			
+		}
+//cantidad varones mayores de 18
+		if(edad>18 && nota>=6 && sexo=='m')
+		{
+			cVarones++;
+		}
+
+		if(sexo=='f' && flag2==0)
+		{
+			edadF=edad;
+			notaF=nota;
+			flag2++;
+			cMujeres++;
+		}
+
+		
+		acumNotas=acumNotas+nota;
+
+
+	}
+	promedio=acumNotas/5;
+
+	alert("el promedio de las notas fue: "+promedio);
+	alert("la nota mas baja fue: "+notaMin+" y su sexo es: "+sexoMenor2);
+	alert("cantidad de varones mayor a 18 con nota superior a 5: "+cVarones);
+	alert("sexo del mas joven: "+ sexoMenor+ " y su nota es: "+notaMin);
+	alert("primera mujer ingresada, Edad: "+edadF+" y su nota es: "+notaF);
+
+
+	if(cMujeres==0)
+	{
+		alert("no hubo ninguna mujer ingresada al sistema!!");
+	}
+
 }
 
